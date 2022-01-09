@@ -20,7 +20,22 @@ describe('WUNDERFLATS: ', () => {
     await Profile.clearAndFillPhoneNumber(randomPhoneNumber);
 
     await Profile.clickSaveButton();
+
+    await expect(Profile.phoneElementAfterSave).toBeExisting();
   
   });
+
+  it('Palindrone test', async () => {
+
+    var strArray = ['Madam', '12321', 'Wunderflats', '', 'malayalam'];
+
+    for (let i=0; i<strArray.length; i++) {
+
+      console.log(strArray[i], Helper.isPalindrome(strArray[i]));
+
+    }
+  
+  });
+
 
 });

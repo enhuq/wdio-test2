@@ -39,6 +39,21 @@ class Helper {
 
     }
 
+    isPalindrome(str) {
+      if (str) {
+        str = str.toLowerCase();
+        const len = str.length;
+        for (let i = 0; i < len / 2; i++) {
+          if (str[i] !== str[len - 1 - i]) {
+              return ' is not a palindrome';
+          }
+        } 
+        return ' is a palindrome';
+      } else {
+        return 'empty is not a valid input'
+      }
+  }
+
 }
 
 module.exports = new Helper();

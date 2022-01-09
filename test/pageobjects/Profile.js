@@ -20,6 +20,9 @@ const Page = require('./Page');
 
     get saveButtonPhone() { return $('button.SubmitButton.PhoneNumberForm-SubmitButton.Button') };
 
+    get saveButtonPhone() { return $('button.SubmitButton.PhoneNumberForm-SubmitButton.Button') };
+
+    get phoneElementAfterSave() { return $('div[data-testid="PhoneNumberSection"]') };
 
     async clickPhoneEditIcon() {
 
