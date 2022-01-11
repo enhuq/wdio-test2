@@ -16,13 +16,47 @@ const Page = require('./Page');
 
     get phoneTextbox() { return $('input[data-testid="PhoneNumberInput-textInput"]') };
 
-    get phoneTextboxHidden() { return $('input[data-testid="PhoneNumberInput-hiddenInput"]') };
-
     get saveButtonPhone() { return $('button.SubmitButton.PhoneNumberForm-SubmitButton.Button') };
 
     get saveButtonPhone() { return $('button.SubmitButton.PhoneNumberForm-SubmitButton.Button') };
 
     get phoneElementAfterSave() { return $('div[data-testid="PhoneNumberSection"]') };
+
+    get editAddressIcon() { return $('div[data-testid="AddressSection"]>div>button') };
+
+    get txtboxAddressLine1() { return $('input[name="addressLine1"]') };
+
+    get txtboxZipCode() { return $('label[data-testid="Address-zipCode"]>div:nth-child(2)>div>input') };
+
+    get txtboxCity() { return $('input[name="city"]') };
+
+    get txtboxState() { return $('input[name="region"]') };
+
+    get countryDropdown() { return $('div[class="DropdownInput-container"]>select[data-testid="DropdownInput-country"]') };
+
+    get saveButtonAddress() { return $('button.SubmitButton.AddressForm-SubmitButton.Button') };
+
+    get savedAddressElement() { return $('div[data-testid="AddressSection"]>div:nth-child(2)>p') };
+
+    get editDOBIcon() { return $('div[data-testid="BirthDateSection"]>div>button') };
+
+    get dayField() { return $('input[placeholder="DD"]') };
+
+    get monthField() { return $('input[placeholder="MM"]') };
+
+    get yearField() { return $('input[placeholder="YYYY"]') };
+
+    get saveButtonDOB() { return $('button.SubmitButton.BirthDate-SubmitButton.Button') };
+
+    get savedDOBElement() { return $('div[data-testid="BirthDateSection"]>div:nth-child(2)>p') };
+
+    get editNationalityIcon() { return $('div[data-testid="NationalitySection"]>div>button') };
+
+    get nationalityDropdown() { return $('div[class="DropdownInput-container"]>select[name="nationality"]') };
+
+    get saveButtonNationality() {return $('button.SubmitButton.BirthDate-SubmitButton.Button') };  //wrong element
+
+    get savedNationalityElement() {return $('div[data-testid="NationalitySection"]>div:nth-child(2)>p') };  
 
     async clickPhoneEditIcon() {
 
@@ -38,19 +72,105 @@ const Page = require('./Page');
 
     async clearAndFillPhoneNumber(number) {
 
-        await this.phoneTextbox.click();
-
-        await browser.keys(['Meta', 'a']);
-
-        await browser.keys(['Meta', 'x']);
-
-        await this.phoneTextbox.setValue(number);
+        await ElementUtil.doClearAndAddValue(this.phoneTextbox, number);
 
     }
 
-    async clickSaveButton() { 
+    async clickSaveButtonPhone() { 
 
         await ElementUtil.doClick(this.saveButtonPhone);
+
+    }
+
+    async clickAddressEditIcon() {
+
+        await ElementUtil.doClick(this.editAddressIcon);
+
+    }
+
+    async clearAndFillAddressLine1(line1) {
+
+        await browser.pause(1000);
+
+        await ElementUtil.doClearAndAddValue(this.txtboxAddressLine1, line1);
+
+    }
+
+    async clearAndFillZipCode(code) {
+
+        ElementUtil.doClearAndAddValue(this.txtboxZipCode, code);
+
+    }
+
+    async clearAndFillCity(city) {
+
+        ElementUtil.doClearAndAddValue(this.txtboxCity, city);
+
+    }
+
+    async clearAndFillState(state) {
+
+        ElementUtil.doClearAndAddValue(this.txtboxState, state);
+
+    }
+
+    async selectCountry(country) {
+
+        await this.countryDropdown.selectByVisibleText(country);
+
+    }
+
+    async clickSaveButtonAddress() { 
+
+        await ElementUtil.doClick(this.saveButtonAddress);
+
+    }
+
+    async clickDOBEditIcon() {
+
+        await ElementUtil.doClick(this.editDOBIcon);
+
+    }
+
+    async clearAndFillDay(value) {
+
+        ElementUtil.doClearAndAddValue(this.dayField, value);
+
+    }
+
+    async clearAndFillMonth(value) {
+
+        ElementUtil.doClearAndAddValue(this.monthField, value);
+
+    }
+
+    async clearAndFillYear(value) {
+
+        ElementUtil.doClearAndAddValue(this.yearField, value);
+
+    }
+
+    async clickSaveButtonDOB() { 
+
+        await ElementUtil.doClick(this.saveButtonDOB);
+
+    }
+
+    async clickNationalityIcon() {
+
+        await ElementUtil.doClick(this.editNationalityIcon);
+
+    }
+
+    async selectNationality(value) {
+
+        await this.nationalityDropdown.selectByVisibleText(value);
+
+    }
+
+    async clickSaveButtonNationality() { 
+
+        await ElementUtil.doClick(this.saveButtonNationality);
 
     }
 

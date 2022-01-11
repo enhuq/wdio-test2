@@ -29,6 +29,18 @@ class ElementUtil {
 
     }
 
+    async doClearAndAddValue(element, value) {
+
+        await element.click();
+
+        await browser.keys(['Meta', 'a']);
+
+        await browser.keys(['Meta', 'x']);
+
+        await element.setValue(value);
+
+    }
+
     async doGetText(element) {
 
         await element.waitForDisplayed( {timeout: 6000} );
